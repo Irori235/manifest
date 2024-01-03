@@ -21,6 +21,7 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: main-gw-gke-tls
+            namespace: cert-manager
             kind: Secret
             group: ""
     - name: main-gw-wildcard
@@ -34,5 +35,6 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: main-gw-gke-wildcard-tls
+            namespace: cert-manager
             kind: Secret
             group: ""
