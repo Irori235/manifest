@@ -4,7 +4,7 @@ metadata:
   name: main-gw-tls
 spec:
   issuerRef:
-    name: letsencrypt-stg
+    name: letsencrypt-prod
     kind: Issuer
     group: cert-manager.io
   dnsNames:
@@ -18,7 +18,7 @@ metadata:
   name: main-gw-gke-tls
 spec:
   issuerRef:
-    name: letsencrypt-stg
+    name: letsencrypt-prod
     kind: Issuer
     group: cert-manager.io
   dnsNames:

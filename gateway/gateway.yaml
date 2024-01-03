@@ -2,28 +2,26 @@ apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: main-gw
-  annotations:
-    cert-manager.io/issuer: letsencrypt-production
 spec:
   gatewayClassName: gke-l7-global-external-managed
   addresses:
     - type: NamedAddress
       value: gke-ip
   listeners:
-    - name: main-gw
+    - name: main-gke-listener
       protocol: HTTPS
       hostname: gke.irori235.dev
       port: 443
       allowedRoutes:
         namespaces:
-          from: Same
+          from: All
       tls:
         mode: Terminate
         certificateRefs:
           - name: main-gw-gke-tls
             kind: Secret
             group: ""
-    - name: main-gw-wildcard
+    - name: main-gke-wildcard-listener
       protocol: HTTPS
       hostname: "*.gke.irori235.dev"
       port: 443

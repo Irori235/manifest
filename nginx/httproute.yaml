@@ -4,7 +4,7 @@ metadata:
   name: main-http
 spec:
   parentRefs:
-    - name: main-gw
+    - name: main-gke-listener
       namespace: gateway
 
   hostnames:
@@ -21,7 +21,7 @@ metadata:
   name: nginx-http-app
 spec:
   parentRefs:
-    - name: main-gw
+    - name: main-gke-wildcard-listener
       namespace: gateway
   hostnames:
     - nginx.gke.irori235.dev
