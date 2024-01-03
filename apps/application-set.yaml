@@ -7,7 +7,6 @@ spec:
   generators:
     - list:
         elements:
-          - path: cert-manager
           - path: external-secrets-operator
           - path: gateway
           - path: nginx
