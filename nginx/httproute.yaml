@@ -4,8 +4,9 @@ metadata:
   name: main-http
 spec:
   parentRefs:
-    - kind: Gateway
-      name: main-gw
+    - name: main-gw
+      namespace: gateway
+
   hostnames:
     - gke.irori235.dev
   rules:
@@ -20,8 +21,8 @@ metadata:
   name: nginx-http-app
 spec:
   parentRefs:
-    - kind: Gateway
-      name: main-gw
+    - name: main-gw
+      namespace: gateway
   hostnames:
     - nginx.gke.irori235.dev
   rules:
