@@ -7,9 +7,10 @@ spec:
   generators:
     - list:
         elements:
-          - path: nginx
           - path: cert-manager
           - path: external-secrets-operator
+          - path: gateway
+          - path: nginx
 
   template:
     metadata:
