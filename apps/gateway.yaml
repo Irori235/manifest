@@ -20,7 +20,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: cert-gw-tls
+          - name: main-gw-gke-tls
             kind: Secret
             group: ""
     - name: main-gw-wildcard
@@ -33,6 +33,6 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: cert-gw-wildcard-tls
+          - name: main-gw-gke-wildcard-tls
             kind: Secret
             group: ""

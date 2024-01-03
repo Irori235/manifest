@@ -15,7 +15,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: cert-gw-wildcard-tls
+  name: main-gw-gke-tls
 spec:
   issuerRef:
     name: letsencrypt-stg
@@ -23,13 +23,13 @@ spec:
     group: cert-manager.io
   dnsNames:
     - gke.irori235.dev
-  secretName: main-gw-wildcard-tls
+  secretName: main-gw-gke-tls
 
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: cert-gw-wildcard-tls
+  name: main-gw-gke-wildcard-tls
 spec:
   issuerRef:
     name: letsencrypt-stg
@@ -37,4 +37,4 @@ spec:
     group: cert-manager.io
   dnsNames:
     - "*.gke.irori235.dev"
-  secretName: main-gw-wildcard-tls
+  secretName: main-gw-gke-wildcard-tls
