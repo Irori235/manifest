@@ -32,7 +32,7 @@ metadata:
   name: main-gw-gke-wildcard-tls
 spec:
   issuerRef:
-    name: letsencrypt-stg
+    name: letsencrypt-prod
     kind: Issuer
     group: cert-manager.io
   dnsNames:
