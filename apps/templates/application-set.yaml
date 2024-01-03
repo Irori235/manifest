@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applications
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          # - path: cert-manager
+          # - path: external-secrets-operator
+          - path: nginx
+  template:
+    metadata:
+      name: "{{ path }}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/Irori235/cluster-ops.git
+        targetRevision: main
+        path: "{{ path }}"
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: "{{ path }}"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
