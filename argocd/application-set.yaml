@@ -10,6 +10,7 @@ spec:
           - path: external-secrets-operator
           - path: gateway
           - path: nginx
+          - path: portfolio
           - path: sandbox
 
   template:
