@@ -8,6 +8,19 @@ spec:
     - type: NamedAddress
       value: gke-ip
   listeners:
+    - name: main-listener
+      protocol: HTTPS
+      hostname: irori235.dev
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: main-gw-tls
+            kind: Secret
+            group: ""
     - name: main-gke-listener
       protocol: HTTPS
       hostname: gke.irori235.dev

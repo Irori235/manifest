@@ -9,7 +9,7 @@ spec:
       namespace: gateway
 
   hostnames:
-    - gke.irori235.dev
+    - irori235.dev
   rules:
     - backendRefs:
         - name: portfolio
