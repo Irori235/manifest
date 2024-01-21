@@ -9,6 +9,12 @@ gcloud container clusters get-credentials <cluster_name> --region=<region>
 k apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
+## Setup Root
+```
+k port-forward svc/argocd-server -n argocd 8080:80
+```
+
+
 ## Setup SSO Client Secret
 ```
 echo -n <secret> | base64
