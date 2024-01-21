@@ -43,3 +43,12 @@ spec:
                 secretKeyRef:
                   name: kmnz-mysql-password
                   key: kmnz-mysql-password
+          readinessProbe:
+            failureThreshold: 30
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            successThreshold: 1
+            timeoutSeconds: 5
+            httpGet:
+              port: 8080
+              path: /healthz
