@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: namakemono
+spec:
+  selector:
+    app: namakemono
+  ports:
+    - port: 80
+      targetPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: namakemono
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: namakemono
+  template:
+    metadata:
+      labels:
+        app: namakemono
+    spec:
+      containers:
+        - name: namakemono
+          image: ghcr.io/cs-sysimpl/namakemono-manager:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: namakemono-db
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_NAME
+              value: app
+            - name: DB_USER
+              value: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kmnz-mysql-external-secret
+                  key: kmnz-mysql-password

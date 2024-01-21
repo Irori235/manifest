@@ -9,6 +9,7 @@ spec:
         elements:
           - path: external-secrets-operator
           - path: gateway
+          - path: kmnz
           - path: nginx
           - path: portfolio
           - path: sandbox

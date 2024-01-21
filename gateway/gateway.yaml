@@ -47,3 +47,16 @@ spec:
           - name: main-gw-gke-wildcard-tls
             kind: Secret
             group: ""
+    - name: main-apps-wildcard-listener
+      protocol: HTTPS
+      hostname: "*.apps.irori235.dev"
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: main-gw-apps-wildcard-tls
+            kind: Secret
+            group: ""

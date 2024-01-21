@@ -38,3 +38,17 @@ spec:
   dnsNames:
     - "*.gke.irori235.dev"
   secretName: main-gw-gke-wildcard-tls
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: main-gw-apps-wildcard-tls
+spec:
+  issuerRef:
+    name: letsencrypt-prod
+    kind: Issuer
+    group: cert-manager.io
+  dnsNames:
+    - "*.apps.irori235.dev"
+  secretName: main-gw-apps-wildcard-tls
