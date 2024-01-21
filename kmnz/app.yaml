@@ -1,3 +1,20 @@
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: kmnz-healthcheck
+spec:
+  default:
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: 80
+        requestPath: /healthz
+  targetRef:
+    group: ""
+    kind: Service
+    name: namakemono
+
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -45,7 +62,7 @@ spec:
                   key: kmnz-mysql-password
           readinessProbe:
             failureThreshold: 30
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 1
             successThreshold: 1
             timeoutSeconds: 5
