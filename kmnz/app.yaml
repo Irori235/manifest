@@ -7,7 +7,7 @@ spec:
     config:
       type: HTTP
       httpHealthCheck:
-        port: 80
+        port: 8080 # containerPort
         requestPath: /healthz
   targetRef:
     group: ""
