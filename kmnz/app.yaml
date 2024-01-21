@@ -41,5 +41,5 @@ spec:
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: kmnz-mysql-external-secret
+                  name: kmnz-mysql-password
                   key: kmnz-mysql-password

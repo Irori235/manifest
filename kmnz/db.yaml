@@ -47,7 +47,7 @@ spec:
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: kmnz-mysql-external-secret
+                  name: kmnz-mysql-password
                   key: kmnz-mysql-password
           volumeMounts:
             - mountPath: /mysql
