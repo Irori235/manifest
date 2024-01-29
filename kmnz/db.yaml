@@ -32,6 +32,8 @@ spec:
   selector:
     matchLabels:
       db: namakemono
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
