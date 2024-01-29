@@ -40,6 +40,8 @@ spec:
       containers:
         - name: mysql
           image: ghcr.io/cs-sysimpl/namakemono-manager-db:latest
+          args:
+            - "--ignore-db-dir=lost+found"
           ports:
             - name: tcp-mysql
               containerPort: 3306
