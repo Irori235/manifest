@@ -65,7 +65,7 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  exec mysqladmin ping -h localhost --silent
+                  exec mysql -uuser -p${MYSQL_PASSWORD} -e "SELECT 1"
       volumes:
         - name: mysql-volume
           persistentVolumeClaim:
