@@ -31,6 +31,6 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/irori235/portfolio:84ca36a
+          image: ghcr.io/irori235/portfolio:latest
           ports:
             - containerPort: 3000
