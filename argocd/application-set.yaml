@@ -9,6 +9,7 @@ spec:
         elements:
           - path: external-secrets-operator
           - path: gateway
+          - path: cashly
           - path: kmnz
           - path: nginx
           - path: portfolio

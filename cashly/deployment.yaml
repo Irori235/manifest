@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cashly
+  labels:
+    app: cashly
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cashly
+  template:
+    metadata:
+      labels:
+        app: cashly
+    spec:
+      containers:
+        - name: cashly
+          image: ghcr.io/irori235/cashly:latest
+          ports:
+            - containerPort: 80

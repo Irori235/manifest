@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cashly
+spec:
+  selector:
+    app: cashly
+  ports:
+    - port: 80
+      targetPort: 80
