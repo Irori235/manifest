@@ -11,7 +11,7 @@ k apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/m
 
 ## Setup Root
 ```
-k port-forward svc/argocd-server -n argocd 8080:80
+k port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 
