@@ -16,7 +16,7 @@ spec:
 
   template:
     metadata:
-      name: "{{ chart }}"
+      name: "istio-{{ chart }}"
     spec:
       project: default
       source:
