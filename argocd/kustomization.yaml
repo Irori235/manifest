@@ -4,4 +4,5 @@ resources:
   - argocd.yaml
   - application-set.yaml
   - cert-manager.yaml
+  - istio.yaml
   - external-secrets-operator.yaml

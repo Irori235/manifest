@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: istio
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - chart: base
+            namespace: istio-system
+          - chart: istiod
+            namespace: istio-system
+          - chart: gateway
+            namespace: istio-gateway
+
+  template:
+    metadata:
+      name: "{{ chart }}"
+    spec:
+      project: default
+      source:
+        repoURL:
+        targetRevision: ">=1.20.0"
+        path: "{{ chart }}"
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: "{{ namespace }}"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
