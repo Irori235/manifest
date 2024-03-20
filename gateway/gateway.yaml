@@ -60,3 +60,18 @@ spec:
           - name: main-gw-apps-wildcard-tls
             kind: Secret
             group: ""
+
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: istio-gw
+spec:
+  gatewayClassName: istio
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
