@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  admin.enabled: "false"
+  url: https://cd.gke.irori235.dev
+  dex.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub
+        config:
+          clientID: b140f1b9dd422ceeeeb2
+          clientSecret: $dex.github.clientSecret
+          orgs:
+          - name: irori-cluster-maintainer-gp

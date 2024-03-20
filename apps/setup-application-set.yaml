@@ -1,19 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: applications
+  name: setup-applications
   namespace: argocd
 spec:
   generators:
     - list:
         elements:
+          - path: argocd
+          - path: istio
           - path: external-secrets-operator
           - path: gateway
-          - path: cashly
-          - path: kmnz
-          - path: nginx
-          - path: portfolio
-          - path: sandbox
 
   template:
     metadata:
