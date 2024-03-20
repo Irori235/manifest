@@ -20,7 +20,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL:
+        repoURL: https://istio-release.storage.googleapis.com/charts
         targetRevision: ">=1.20.0"
         path: "{{ chart }}"
       destination:
