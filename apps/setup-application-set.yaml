@@ -12,6 +12,7 @@ spec:
           - path: external-secrets-operator
           - path: istio-gateway
           - path: kubecost
+          - path: datadog
 
   template:
     metadata:
