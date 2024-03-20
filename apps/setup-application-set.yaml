@@ -11,6 +11,7 @@ spec:
           - path: istio
           - path: external-secrets-operator
           - path: istio-gateway
+          - path: kubecost
 
   template:
     metadata:
