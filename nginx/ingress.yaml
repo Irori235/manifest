@@ -3,9 +3,12 @@ kind: Ingress
 metadata:
   name: nginx-iap-ingress
   annotations:
-    networking.gke.io/managed-certificates: nginx-iap-certificate
     kubernetes.io/ingress.allow-http: "false"
 spec:
+  tls:
+    - hosts:
+        - iap.gke.irori235.dev
+      secretName: nginx-iap-tls
   defaultBackend:
     service:
       name: nginx
@@ -24,10 +27,15 @@ spec:
       secretName: gke-iap-secret
 
 ---
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
+apiVersion: cert-manager.io/v1
+kind: Certificate
 metadata:
-  name: nginx-iap-certificate
+  name: nginx-iap-tls
 spec:
-  domains:
+  issuerRef:
+    name: letsencrypt-prod
+    kind: Issuer
+    group: cert-manager.io
+  dnsNames:
     - iap.gke.irori235.dev
+  secretName: nginx-iap-tls
