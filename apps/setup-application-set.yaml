@@ -10,7 +10,7 @@ spec:
           - path: argocd
           - path: istio
           - path: external-secrets-operator
-          - path: gateway
+          - path: istio-gateway
 
   template:
     metadata:
