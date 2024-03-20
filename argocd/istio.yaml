@@ -1,37 +1,64 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: istio
+  name: istio-base
   namespace: argocd
 spec:
-  generators:
-    - list:
-        elements:
-          - chart: base
-            namespace: istio-system
-          - chart: istiod
-            namespace: istio-system
-          - chart: gateway
-            namespace: istio-gateway
+  project: default
+  source:
+    chart: base
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: ">=1.20.0"
+    helm:
+      releaseName: istio-base
+      parameters:
+        - name: defaultRevision
+          value: "default"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: istio-system
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
 
-  template:
-    metadata:
-      name: "istio-{{ chart }}"
-    spec:
-      project: default
-      source:
-        chart: "{{ chart }}"
-        repoURL: https://istio-release.storage.googleapis.com/charts
-        targetRevision: ">=1.20.0"
-        helm:
-          releaseName: "istio-{{ chart }}"
-          values: |
-            {{- if eq chart "base" }}
-            defaultRevision: "default"
-            {{- end }}
-      destination:
-        server: "https://kubernetes.default.svc"
-        namespace: "{{ namespace }}"
-      syncPolicy:
-        syncOptions:
-          - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-istiod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: istiod
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: ">=1.20.0"
+    helm:
+      releaseName: istio-istiod
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: istio-system
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-gateway
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: gateway
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: ">=1.20.0"
+    helm:
+      releaseName: istio-gateway
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: istio-gateway
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
