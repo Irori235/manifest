@@ -6,7 +6,7 @@ spec:
   parentRefs:
     - kind: Gateway
       name: main-gw
-      namespace: gateway
+      namespace: istio-gateway
   hostnames:
     - nginx.gke.irori235.dev
   rules:
