@@ -25,11 +25,10 @@ spec:
         targetRevision: ">=1.20.0"
         helm:
           releaseName: "istio-{{ chart }}"
-          {{- if eq chart "base" }}
-          parameters:
-            - name: defaultRevision
-              value: "default"
-          {{- end }}
+          values: |
+            {{- if eq chart "base" }}
+            defaultRevision: "default"
+            {{- end }}
       destination:
         server: "https://kubernetes.default.svc"
         namespace: "{{ namespace }}"
