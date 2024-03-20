@@ -4,6 +4,7 @@ metadata:
   name: nginx-iap-ingress
   annotations:
     networking.gke.io/managed-certificates: nginx-iap-certificate
+    kubernetes.io/ingress.allow-http: "false"
 spec:
   defaultBackend:
     service:
