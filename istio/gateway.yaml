@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-gateway
+  name: istio-gateway-core
   namespace: argocd
 spec:
   project: default
@@ -10,7 +10,7 @@ spec:
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: ">=1.20.0"
     helm:
-      releaseName: istio-gateway
+      releaseName: istio-gateway-core
   destination:
     server: "https://kubernetes.default.svc"
     namespace: istio-gateway
