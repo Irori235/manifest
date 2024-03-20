@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - application-set.yaml
   - setup-application-set.yaml
+  - argocd.yaml
   - cert-manager.yaml
-  - istio.yaml
   - external-secrets-operator.yaml
