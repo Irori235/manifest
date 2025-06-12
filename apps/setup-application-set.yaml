@@ -20,7 +20,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/Irori235/cluster-ops.git
+        repoURL: https://github.com/Irori235/manifest.git
         targetRevision: main
         path: "{{ path }}"
       destination:
