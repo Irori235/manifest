@@ -35,6 +35,19 @@ spec:
           - name: main-gw-gke-tls
             kind: Secret
             group: ""
+    - name: main-wiki-listener
+      protocol: HTTPS
+      hostname: "wiki.irori235.dev"
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: main-gw-wiki-tls
+            kind: Secret
+            group: ""
     - name: main-gke-wildcard-listener
       protocol: HTTPS
       hostname: "*.gke.irori235.dev"
